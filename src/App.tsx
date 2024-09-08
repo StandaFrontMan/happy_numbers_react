@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
 // import { MathExamplesContainer } from "./modules";
 import { useInjection } from "./core/hooks/useInjection";
+import { DiceRenderContainer } from "./modules";
 
 function App() {
   //states
@@ -69,21 +70,10 @@ function App() {
         </div>
 
         <div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {examplesArray.length > 0 && (
-              <>
-                {examplesArray.map((_, index) => (
-                  <div style={{ display: "flex", flexDirection: "row" }}>
-                    {Array.from({ length: nIndividualNumber }).map(
-                      (_, index) => (
-                        <div key={index}>O</div>
-                      )
-                    )}
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
+          <DiceRenderContainer
+            nIndividualNumber={nIndividualNumber}
+            examplesArray={examplesArray}
+          />
         </div>
       </div>
 
