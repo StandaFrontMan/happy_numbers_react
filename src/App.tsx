@@ -5,7 +5,7 @@ import { useInjection } from "./core/hooks/useInjection";
 
 function App() {
   //states
-  const [nIndividualNumber, setNIndividualNumber] = useState<number>(2);
+  const [nIndividualNumber, setNIndividualNumber] = useState<number>(3);
 
   const [examplesArray, setExamplesArray] = useState<string[]>([]);
 
@@ -68,7 +68,23 @@ function App() {
           )}
         </div>
 
-        <div>qwe</div>
+        <div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {examplesArray.length > 0 && (
+              <>
+                {examplesArray.map((_, index) => (
+                  <div style={{ display: "flex", flexDirection: "row" }}>
+                    {Array.from({ length: nIndividualNumber }).map(
+                      (_, index) => (
+                        <div key={index}>O</div>
+                      )
+                    )}
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+        </div>
       </div>
 
       <div className="footer">
