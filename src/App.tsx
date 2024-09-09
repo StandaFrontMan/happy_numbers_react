@@ -21,6 +21,10 @@ function App() {
   const [incorrectAnswerError, setIncorrectAnswerError] =
     useState<boolean>(false); // состояние для ошибки
 
+  const [buttonState, setButtonState] = useState<"default" | "right" | "wrong">(
+    "default"
+  );
+
   //repositories
 
   const { calculateExample, checkAnswer } = useInjection();
@@ -45,9 +49,19 @@ function App() {
       setUserAnswer("");
 
       setMaximumExamples((prev) => prev + 1);
+
+      setButtonState("right");
+      setTimeout(() => setButtonState("default"), 1000);
     } else {
       setIncorrectAnswerError(true);
       setTimeout(() => setIncorrectAnswerError(false), 1000);
+
+      setButtonState("wrong");
+
+      setTimeout(() => {
+        setIncorrectAnswerError(false);
+        setButtonState("default");
+      }, 1000);
     }
   };
 
@@ -87,7 +101,12 @@ function App() {
       </div>
 
       <div className="footer">
-        <button onClick={() => handleCheckAnswer()}>button</button>
+        <button
+          className={`done_button ${buttonState}`}
+          onClick={() => handleCheckAnswer()}
+        >
+          Done
+        </button>
       </div>
     </div>
   );

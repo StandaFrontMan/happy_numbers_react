@@ -85,3 +85,29 @@
   transform: translateY(20px);
   animation: slideUp 0.5s forwards;
 }
+
+.done_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 30px;
+
+  background-color: rgb(52, 60, 147);
+
+  border: none;
+  border-radius: 10px;
+}
+
+.done_button:hover {
+  background-color: #afeeee;
+}
+
+.done_button.right {
+  background-color: #228b22;
+}
+
+.done_button.wrong {
+  background-color: #fa8072;
+}
