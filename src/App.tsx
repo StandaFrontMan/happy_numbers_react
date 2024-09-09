@@ -1,5 +1,4 @@
 import "./App.css";
-import { useInjection } from "./core/hooks/useInjection";
 import { DiceRenderContainer } from "./modules";
 import { DoneButtonContainer } from "./components";
 import { useGameContext } from "./context/AppContext";
