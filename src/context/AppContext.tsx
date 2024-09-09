@@ -1,7 +1,5 @@
-// GameContext.tsx
 import React, { createContext, useContext, useState } from "react";
 
-// Определение типов для контекста
 type GameContextType = {
   nIndividualNumber: number;
   examplesArray: string[];
@@ -20,10 +18,8 @@ type GameContextType = {
   >;
 };
 
-// Создание контекста
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
-// Хук для использования контекста
 export const useGameContext = () => {
   const context = useContext(GameContext);
   if (!context) {
@@ -32,11 +28,9 @@ export const useGameContext = () => {
   return context;
 };
 
-// Провайдер контекста
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  // Состояния
   const [nIndividualNumber] = useState<number>(3);
   const [examplesArray, setExamplesArray] = useState<string[]>([]);
   const [multiPlier, setMultiPlier] = useState<number>(1);
