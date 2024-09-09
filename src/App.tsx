@@ -1,30 +1,25 @@
-import { useState } from "react";
 import "./App.css";
-// import { MathExamplesContainer } from "./modules";
 import { useInjection } from "./core/hooks/useInjection";
 import { DiceRenderContainer } from "./modules";
 import { DoneButtonContainer } from "./components";
+import { useGameContext } from "./context/AppContext";
 
 function App() {
-  //states
-  const [nIndividualNumber, setNIndividualNumber] = useState<number>(3);
-
-  const [examplesArray, setExamplesArray] = useState<string[]>([]);
-
-  const [multiPlier, setmultiPlier] = useState<number>(1);
-
-  const [userAnswer, setUserAnswer] = useState<string>("");
-
-  const [maximumExamples, setMaximumExamples] = useState<number>(0);
-
-  // style states
-
-  const [incorrectAnswerError, setIncorrectAnswerError] =
-    useState<boolean>(false);
-
-  const [buttonState, setButtonState] = useState<"default" | "right" | "wrong">(
-    "default"
-  );
+  const {
+    nIndividualNumber,
+    examplesArray,
+    multiPlier,
+    userAnswer,
+    maximumExamples,
+    incorrectAnswerError,
+    buttonState,
+    setUserAnswer,
+    setExamplesArray,
+    setMultiPlier,
+    setMaximumExamples,
+    setIncorrectAnswerError,
+    setButtonState,
+  } = useGameContext();
 
   //repositories
 
@@ -32,6 +27,8 @@ function App() {
 
   const calculateExampleRepo = calculateExample();
   const checkAnswerRepo = checkAnswer();
+
+  // logic
 
   const handleCheckAnswer = () => {
     const correctAnswer = calculateExampleRepo.calculateExample(
@@ -45,7 +42,7 @@ function App() {
         `${nIndividualNumber} * ${multiPlier} = ${correctAnswer}`,
       ]);
 
-      setmultiPlier((prev) => prev + 1);
+      setMultiPlier((prev) => prev + 1);
 
       setUserAnswer("");
 
