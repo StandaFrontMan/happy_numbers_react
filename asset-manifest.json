@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/happy_numbers_react/static/css/main.e46e0a79.css",
+    "main.js": "/happy_numbers_react/static/js/main.161dae72.js",
+    "static/js/453.6cb9ac3b.chunk.js": "/happy_numbers_react/static/js/453.6cb9ac3b.chunk.js",
+    "index.html": "/happy_numbers_react/index.html",
+    "main.e46e0a79.css.map": "/happy_numbers_react/static/css/main.e46e0a79.css.map",
+    "main.161dae72.js.map": "/happy_numbers_react/static/js/main.161dae72.js.map",
+    "453.6cb9ac3b.chunk.js.map": "/happy_numbers_react/static/js/453.6cb9ac3b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e46e0a79.css",
+    "static/js/main.161dae72.js"
+  ]
+}
