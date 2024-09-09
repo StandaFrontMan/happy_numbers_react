@@ -1,9 +1,12 @@
+import { useHandleCheckAnswer } from "../../core/hooks/useCommitAnswer";
+
 type Props = {
-  handleCheckAnswer: () => void;
   buttonState: "default" | "right" | "wrong";
 };
 
-export function DoneButtonView({ buttonState, handleCheckAnswer }: Props) {
+export function DoneButtonView({ buttonState }: Props) {
+  const { handleCheckAnswer } = useHandleCheckAnswer();
+
   return (
     <button
       className={`done_button ${buttonState}`}

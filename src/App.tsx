@@ -14,54 +14,7 @@ function App() {
     incorrectAnswerError,
     buttonState,
     setUserAnswer,
-    setExamplesArray,
-    setMultiPlier,
-    setMaximumExamples,
-    setIncorrectAnswerError,
-    setButtonState,
   } = useGameContext();
-
-  //repositories
-
-  const { calculateExample, checkAnswer } = useInjection();
-
-  const calculateExampleRepo = calculateExample();
-  const checkAnswerRepo = checkAnswer();
-
-  // logic
-
-  const handleCheckAnswer = () => {
-    const correctAnswer = calculateExampleRepo.calculateExample(
-      nIndividualNumber,
-      multiPlier
-    );
-
-    if (checkAnswerRepo.checkAnswer(parseInt(userAnswer, 10), correctAnswer)) {
-      setExamplesArray((prev) => [
-        ...prev,
-        `${nIndividualNumber} * ${multiPlier} = ${correctAnswer}`,
-      ]);
-
-      setMultiPlier((prev) => prev + 1);
-
-      setUserAnswer("");
-
-      setMaximumExamples((prev) => prev + 1);
-
-      setButtonState("right");
-      setTimeout(() => setButtonState("default"), 1000);
-    } else {
-      setIncorrectAnswerError(true);
-      setTimeout(() => setIncorrectAnswerError(false), 1000);
-
-      setButtonState("wrong");
-
-      setTimeout(() => {
-        setIncorrectAnswerError(false);
-        setButtonState("default");
-      }, 1000);
-    }
-  };
 
   return (
     <div className="app_container">
@@ -102,10 +55,7 @@ function App() {
       </div>
 
       <div className="footer">
-        <DoneButtonContainer
-          buttonState={buttonState}
-          handleCheckAnswer={handleCheckAnswer}
-        />
+        <DoneButtonContainer buttonState={buttonState} />
       </div>
     </div>
   );
