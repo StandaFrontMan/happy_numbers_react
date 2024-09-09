@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 // import { MathExamplesContainer } from "./modules";
 import { useInjection } from "./core/hooks/useInjection";
 import { DiceRenderContainer } from "./modules";
+import { DoneButtonContainer } from "./components";
 
 function App() {
   //states
@@ -19,7 +20,7 @@ function App() {
   // style states
 
   const [incorrectAnswerError, setIncorrectAnswerError] =
-    useState<boolean>(false); // состояние для ошибки
+    useState<boolean>(false);
 
   const [buttonState, setButtonState] = useState<"default" | "right" | "wrong">(
     "default"
@@ -79,7 +80,10 @@ function App() {
 
           {maximumExamples < 10 && (
             <div>
-              {nIndividualNumber} * {multiPlier} ={" "}
+              <span className="done_example">
+                {nIndividualNumber} * {multiPlier} ={" "}
+              </span>
+
               <input
                 type="text"
                 value={userAnswer}
@@ -101,12 +105,10 @@ function App() {
       </div>
 
       <div className="footer">
-        <button
-          className={`done_button ${buttonState}`}
-          onClick={() => handleCheckAnswer()}
-        >
-          Done
-        </button>
+        <DoneButtonContainer
+          buttonState={buttonState}
+          handleCheckAnswer={handleCheckAnswer}
+        />
       </div>
     </div>
   );
