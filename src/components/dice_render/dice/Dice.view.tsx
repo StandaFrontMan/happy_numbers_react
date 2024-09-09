@@ -1,3 +1,3 @@
 export function DiceView() {
-  return <div>0</div>;
+  return <div className="cube"></div>;
 }

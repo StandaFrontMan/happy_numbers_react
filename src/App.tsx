@@ -16,6 +16,11 @@ function App() {
 
   const [maximumExamples, setMaximumExamples] = useState<number>(0);
 
+  // style states
+
+  const [incorrectAnswerError, setIncorrectAnswerError] =
+    useState<boolean>(false); // состояние для ошибки
+
   //repositories
 
   const { calculateExample, checkAnswer } = useInjection();
@@ -41,7 +46,8 @@ function App() {
 
       setMaximumExamples((prev) => prev + 1);
     } else {
-      alert("Wrong");
+      setIncorrectAnswerError(true);
+      setTimeout(() => setIncorrectAnswerError(false), 1000);
     }
   };
 
@@ -64,6 +70,9 @@ function App() {
                 type="text"
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
+                className={`inpit_element ${
+                  incorrectAnswerError ? "input-error" : ""
+                }`}
               />
             </div>
           )}

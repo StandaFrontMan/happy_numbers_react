@@ -11,7 +11,7 @@ export function DiceRenderView({ rows }: Props) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {rows.map((row, rowIndex) => (
-        <div key={rowIndex} style={{ display: "flex", flexDirection: "row" }}>
+        <div key={rowIndex} className="cube_container">
           {row.map(({ rowIndex, colIndex }) => (
             <DiceView key={`${rowIndex}-${colIndex}`} />
           ))}
