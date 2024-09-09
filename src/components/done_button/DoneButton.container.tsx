@@ -1,3 +1,4 @@
+import { useHandleCheckAnswer } from "../../core/hooks/useCommitAnswer";
 import { DoneButtonView } from "./DoneButton.view";
 
 type Props = {
@@ -5,5 +6,12 @@ type Props = {
 };
 
 export function DoneButtonContainer({ buttonState }: Props) {
-  return <DoneButtonView buttonState={buttonState} />;
+  const { handleCheckAnswer } = useHandleCheckAnswer();
+
+  return (
+    <DoneButtonView
+      buttonState={buttonState}
+      handleCheckAnswer={handleCheckAnswer}
+    />
+  );
 }
